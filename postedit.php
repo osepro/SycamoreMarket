@@ -1,0 +1,84 @@
+<?php include("header.php"); ?>
+<?php
+// Start the session
+session_start();
+?>
+<div class="container-fluid main-home">
+<div class="row toprow">
+<div class="container main-container">
+<div class="row">
+<?php include("homeheader.php"); ?>
+</div>
+</div>
+</div>
+<?php
+$usered=$_GET['userid'];
+$profile="SELECT * FROM users WHERE userid='$usered'";
+$profilequery=$dbconn->query($profile);
+?>
+
+<div class="container main-body">
+<div class="row">
+<div class="col-md-6 nopadding temp-account col-centered">
+<p style="font-size: 24px; text-align: center; font-family: Tahoma;">Edit Post</p>
+
+<span class="succupdate succmmessage">Profile successfully updated.</span>
+
+<form id="EditUpdate" class="home-post" enctype="multipart/form-data" method="Post">
+<input type="hidden" id="sessionvar" name="sessionvar" value="<?php echo $usered; ?>">
+<table width="100%">
+		<tbody>
+		<?php while($row=$profilequery->fetch_array()) { ?>
+		<tr>
+		<td><input type="text" name="firstname" id="userid" value="<?php echo $row[1]; ?>" class="innertext"></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="lastname" id="sellingwhat" value="<?php echo $row[2]; ?>" class="innertext"></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="phoneno" id="addprice" value="<?php echo $row[3]; ?>" class="innertext"></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="email" id="prodlocate" value="<?php echo $row[4]; ?>" class="innertext" placeholder="Location" disabled></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="levels" id="prodlocate" value="<?php echo $row[6]; ?>" class="innertext" placeholder="Location"></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="sexdesc" id="prodlocate" value="<?php echo $row[7]; ?>" class="innertext" placeholder="Location"></td>
+		</tr>
+		<tr>
+        <td>
+      
+</td>
+		</tr>
+		<tr>
+		<td><input type="submit" name="UpdateProfile" value="Update Profile" class="posting-btn-login" id="update-profile"></td>
+		</tr>
+		</tbody>
+		<?php } ?>
+	</table>
+	</form>
+</div>
+</div>
+</div>
+
+
+<footer class="page-footer bottompage">
+<div class="container nopadding"><label class="footerlabel">
+This website was developed by <a href="https://www.linkedin.com/in/jagbadu/" target="_blank">Ose Agbadu</a> for the sole purpose of practice and demonstration of his awesome programming skills</label>
+</div>
+</footer>
+</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="js/uploads.js"></script>
+    <script src="js/scripts2.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
